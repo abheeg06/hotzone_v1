@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        background-color:lemonchiffon;
+        width: 800px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1 {text-align: center;}
+    h2 {text-align: center;}
+    .search_box{
+        display: block;
+        margin-bottom: 10px;
+    }
+    .message{display: block;}
+    .location{
+        width: 700px;
+        height: auto;
+        background-color:azure;
+        outline: 5px solid black;
+        padding: 10px;
+        margin: 20px;
+        display: block;
+        float: left;
+    }
+    .footer {
+        background-color:lightgreen;
+        display: inline-block;
+    }
+    a {
+        display: inline-block;
+        text-align: center;
+        width: 380px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<h1>HotZone</h1>
+<h2>Add New Location</h2>
+
+<span> Search Box:</span>
+<form method="GET" class="search_box">
+    {% csrf_token %}
+    {{add_form.name}}
+    <button type="submit">Search</button>
+</form>
+<div class="message">{{message}}</div>
+{% for result in result_list %}
+<div class="location">
+    <form method="POST">
+        {% csrf_token %}
+        <h3>{{result.name}}</h3>
+        <li>Address: {{result.address}}</li>
+        <li>X-coord: {{result.xCoord}}</li>
+        <li>Y-coord: {{result.yCoord}}</li>
+        <input type="hidden" name="name" value='{{result.name}}'/>
+        <input type="hidden" name="address" value='{{result.address}}'/>
+        <input type="hidden" name="xCoord" value='{{result.xCoord}}'/>
+        <input type="hidden" name="yCoord" value='{{result.yCoord}}'/>
+        <button type="submit">Add</button>
+    </form>
+</div>
+{% endfor %}
+
+<div class="footer">
+    <a href="{% url 'list_location' %}">View locations detail</a>
+    <a href="{% url 'index' %}">Back to Index</a>
+</div>
+
+
+</body>
+</html>
