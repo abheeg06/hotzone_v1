@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        background-color:lemonchiffon;
+        width: 800px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1 {text-align: center;}
+    .footer {background-color:lightgreen;}
+    a {
+        display: inline-block;
+        text-align: center;
+        width: 380px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<h1>HotZone</h1>
+
+<div class="footer">
+    <a href="{% url 'add_location' %}">Add new location</a>
+    <a href="{% url 'list_location' %}">View locations detail</a>
+</div>
+
+
+</body>
+</html>
