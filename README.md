@@ -12,7 +12,7 @@ In the directory, execute:
 `pip install pipenv`  
 `python -m pipenv install django~=3.1.2`  
 `python -m pipenv shell`  
-You should launched a shubshell in virtual environment  
+You should launched a subshell in virtual environment  
   
 To run the server, execute the following commands in the subshell:  
 `cd project`  
