@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>HotZone</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>HotZone</h1>
+</div>
+
+<div class="navigation">
+    <a href="{% url 'list_cases' %}"> Cases </a> | 
+    <a href="{% url 'list_locations' %}"> Locations </a> | 
+    <a href="{% url 'list_viruses' %}"> Viruses </a>
+</div>
+
+<div class="main">
+    <h2>View Case Records</h2>
+    <table>
+        <tr>
+            <th>Case Number</th>
+            <th>Infected Virus</th>
+            <th>Date Confirmed</th>
+            <th>Type</th>
+        </tr>
+        {% for case in cases_list %}
+        <tr>
+            <th><a href="{% url 'show_case_detail' case.caseNumber %}">{{case.caseNumber}}</a></th>
+            <th><a href="{% url 'show_virus_detail' case.virus %}">{{case.virus}}</a></th>
+            <th>{{case.date}}</th>
+            <th>{{case.caseType}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</div>
+
+</body>
+</html>

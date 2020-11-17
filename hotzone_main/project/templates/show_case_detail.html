@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>HotZone</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>HotZone</h1>
+</div>
+
+<div class="navigation">
+    <a href="{% url 'list_cases' %}"> Cases </a> | 
+    <a href="{% url 'list_locations' %}"> Locations </a> | 
+    <a href="{% url 'list_viruses' %}"> Viruses </a>
+</div>
+
+<div class="main">
+    <h2>View Case Detail</h2>
+    <h3>Case Information</h3>
+    <span>Case Number: {{case.caseNumber}}</span>
+    <span>Infected Virus: {{case.virus}}</span>
+    <span>Confirmated Date: {{case.date}}</span>
+    <span>Type: {{case.caseType}}</span>
+
+    <h3>Personal Information</h3>
+    <span>Patient Name: {{patient.name}}</span>
+    <span>ID Number: {{patient.idNumber}}</span>
+    <span>Date of Birth: {{patient.dataOfBirth}}</span>
+
+    <h3>Visited Location</h3>
+    <a href="{% url 'show_case_detail' case.caseNumber %}/add_location">+ visited location</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date From</th>
+            <th>Date To</th>
+            <th>Category</th>
+        </tr>
+        {% for visited_location in visited_locations_list %}
+        <tr>
+            <th><a href="{% url 'show_location_detail' visited_location.name %}">{{visited_location.name}}</a></th>
+            <th>{{visited_location.dateFrom}}</th>
+            <th>{{visited_location.dateTo}}</th>
+            <th>{{visited_location.category}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

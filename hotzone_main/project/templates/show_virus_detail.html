@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>HotZone</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>HotZone</h1>
+</div>
+
+<div class="navigation">
+    <a href="{% url 'list_cases' %}"> Cases </a> | 
+    <a href="{% url 'list_locations' %}"> Locations </a> | 
+    <a href="{% url 'list_viruses' %}"> Viruses </a>
+</div>
+
+<div class="main">
+    <h2>View Virus Detail</h2>
+    <h3>Virus Information</h3>
+    <span>Virus Name: {{virus.name}}</span>
+    <span>Common Name: {{virus.commonName}}</span>
+    <span>Max. Infectious Period: {{virus.maxInfectionPeriod}}</span>
+</div>
+
+</body>
+</html>
+

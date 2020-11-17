@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>HotZone</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>HotZone</h1>
+</div>
+
+<div class="navigation">
+    <a href="{% url 'list_cases' %}"> Cases </a> | 
+    <a href="{% url 'list_locations' %}"> Locations </a> | 
+    <a href="{% url 'list_viruses' %}"> Viruses </a>
+</div>
+
+<div class="main">
+    <h2>Add Visited Location</h2>
+    <form method="POST">
+        <h3>Case Information</h3>
+        <label for="caseNumber">Case Number: </label>
+        <input id="caseNumber" name="caseNumber" value="{{case.caseNumber}}" readonly/>
+        <label for="dateFrom">Date From: </label>
+        <input id="dateFrom" type="date" name="dateFrom" required/>
+        <label for="dateTo">Date To: </label>
+        <input id="dateTo" type="date" name="dateTo" required/>
+        <label for="category">Category: </label>
+        <select id="category "name="category" required>
+            <option value=Residence>Residence</option>
+            <option value=Workplace>Workplace</option>
+            <option value=Visit>Visit</option>
+        </select>
+
+        <span>Search:</span>
+        {% csrf_token %}
+        {{add_form.name}}
+        <button type="submit" name="search">Search</button>
+    </form>
+    <div class="message">{{message}}</div>
+
+    {% for hotzone_result in hotzone_results_list %}
+    <div class="hotzone_result">
+        <form method="POST">
+            {% csrf_token %}
+            <h3>{{hotzone_result.name}}</h3>
+            <li>Address: {{hotzone_result.address}}</li>
+            <li>X-coord: {{hotzone_result.xCoord}}</li>
+            <li>Y-coord: {{hotzone_result.yCoord}}</li>
+            <input type="hidden" name="caseNumber" value='{{hotzone_result.caseNumber}}'/>
+            <input type="hidden" name="dateFrom" value='{{hotzone_result.dateFrom}}'/>
+            <input type="hidden" name="dateTo" value='{{hotzone_result.dateTo}}'/>
+            <input type="hidden" name="category" value='{{hotzone_result.category}}'/>
+            <input type="hidden" name="name" value='{{hotzone_result.name}}'/>
+            <button type="submit" name="add_visited_location">Add</button>
+        </form>
+    </div>
+    {% endfor %}
+
+    {% for api_result in api_results_list %}
+    <div class="api_result">
+        <form method="POST">
+            {% csrf_token %}
+            <h3>{{api_result.name}}</h3>
+            <li>Address: {{api_result.address}}</li>
+            <li>X-coord: {{api_result.xCoord}}</li>
+            <li>Y-coord: {{api_result.yCoord}}</li>
+            <input type="hidden" name="caseNumber" value='{{api_result.caseNumber}}'/>
+            <input type="hidden" name="dateFrom" value='{{api_result.dateFrom}}'/>
+            <input type="hidden" name="dateTo" value='{{api_result.dateTo}}'/>
+            <input type="hidden" name="category" value='{{api_result.category}}'/>
+            <input type="hidden" name="name" value='{{api_result.name}}'/>
+            <input type="hidden" name="address" value='{{api_result.address}}'/>
+            <input type="hidden" name="xCoord" value='{{api_result.xCoord}}'/>
+            <input type="hidden" name="yCoord" value='{{api_result.yCoord}}'/>
+            <button type="submit" name="add_new_location">Add</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
+
