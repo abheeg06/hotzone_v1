@@ -17,10 +17,10 @@ You should launched a subshell in virtual environment
 To run the server, execute the following commands in the subshell:  
 `cd project`  
 `python manage.py runserver`  
-The server should be started on http://127.0.0.1:8000/  
+The server should be started on http://localhost:8000/  
   
-Go to http://127.0.0.1:8000/cases to access the web app.  
+Go to http://localhost:8000/cases to access the web app.  
   
-If you need to access the admin site, login at http://127.0.0.1:8000/admin with:  
+If you need to access the admin site, login at http://localhost:8000/admin with:  
 username: groupx  
 password: groupx  
