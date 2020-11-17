@@ -1,9 +1,7 @@
 # COMP3297 GroupX HotZone
 
-UI prototype: 
-https://balsamiq.cloud/s976ssg/pwtzqt3__
-Team Drive: 
-https://drive.google.com/drive/folders/1SM24mntOmWvPcFDYgmVo8c5IKaX5165z?usp=sharing
+UI prototype: https://balsamiq.cloud/s976ssg/pwtzqt3  
+Team Drive: https://drive.google.com/drive/folders/1SM24mntOmWvPcFDYgmVo8c5IKaX5165z?usp=sharing  
 
 # How to run
 First, clone the repo to your local directory with:
