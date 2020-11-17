@@ -14,7 +14,7 @@ In the directory, execute:
 `python -m pipenv shell`  
 You should launched a subshell in virtual environment  
 
-If you are testing on a new temporary folder, you may also need to execute:
+If you are testing on a new temporary folder, you may also need to execute:  
 `pipenv install requests`
 
 To run the server, execute the following commands in the subshell:  
