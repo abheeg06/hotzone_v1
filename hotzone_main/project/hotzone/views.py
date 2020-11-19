@@ -96,6 +96,7 @@ def add_visted_location(request, target):
                     hotzone_results_list.append(hotzone_result_detail)
             except:
                 print()
+            message = "Result:"
         elif "add_new_location" in request.POST:
             location = request.POST.get("name")
             address = request.POST.get('address')
