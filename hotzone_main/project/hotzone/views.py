@@ -72,7 +72,13 @@ def add_visted_location(request, target):
                     }
                     api_results_list.append(api_result_detail)
             except:
-                message = "Fail to retrieve data from GeoDataStore!"
+                code = requests.get(url.format(location)).status_code
+                if (code == 400):
+                    message = "Bad Request! Your input is invalid."
+                elif (code == 500):
+                    message = "Internal server error! Please try again later."
+                else:
+                    message = "Fail to retrieve data from GeoDataStore for unknown reasons!"
             
             try:
                 records = LocationDetail.objects.filter(name__icontains=location)
