@@ -1,0 +1,15 @@
+#logout_link, #greeting_message {
+	color: white;
+}
+#logout_link:hover {
+	color: red;
+}
+#greeting_message {
+	margin-right: 30px;
+}
+#logout_link {
+	margin-left: 30px;
+}
+#login_link {
+	display: none;
+}
