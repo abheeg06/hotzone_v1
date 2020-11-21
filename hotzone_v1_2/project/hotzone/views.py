@@ -152,8 +152,10 @@ def add_visted_location(request, target):
             case = CaseDetail.objects.get(caseNumber = caseNumber)
             new_visited_location = VisitedLocationDetail(caseNumber=case, name=location, dateFrom=dateFrom, dateTo=dateTo, category=category)
             new_location_record = LocationDetail(name=location, address=address, xCoord=xCoord, yCoord=yCoord)
+            check_existing = LocationDetail.objects.filter(xCoord=xCoord, yCoord=yCoord)
+            if not check_existing:
+                new_location_record.save()
             new_visited_location.save()
-            new_location_record.save()
             message = "New visited location and location record added!"
         
         elif "add_visited_location" in request.POST:
