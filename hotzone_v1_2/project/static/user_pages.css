@@ -4,6 +4,9 @@ body {
 #login_link {
 	color: white;
 }
+#login_link:hover {
+	color: red;
+}
 #navbarDropdown, #logout_link {
 	display: none;
 }
@@ -58,4 +61,7 @@ form {
 #specification {
 	text-align: center;
 	font-weight: bold;
+}
+.nav-link {
+	display: none;
 }

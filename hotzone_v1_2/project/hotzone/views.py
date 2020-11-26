@@ -12,6 +12,7 @@ import math
 import requests
 import numpy as np
 
+@login_required(login_url='user_login')
 def custom_metric(q, p, space_eps, time_eps):
     dist = 0
     for i in range(2):
@@ -25,7 +26,7 @@ def custom_metric(q, p, space_eps, time_eps):
     else:
         return 2
 
-
+@login_required(login_url='user_login')
 def cluster(vector_4d, distance, time, minimum_cluster):
 
     params = {"space_eps": distance, "time_eps": time}
