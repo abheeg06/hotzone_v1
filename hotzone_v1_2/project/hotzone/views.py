@@ -224,7 +224,8 @@ def add_visted_location(request, target):
 
 @login_required(login_url='user_login')
 def view_clusters(request):
-    context = {'flag': -1}
+    paras = {'D': 200, 'T': 3, 'C': 2}
+    context = {'flag': -1, 'paras': paras}
     if "view" in request.POST:
         dots_list = []
         visitedLocations = VisitedLocationDetail.objects.all()
@@ -238,6 +239,7 @@ def view_clusters(request):
         T = int(request.POST.get("time"))
         C = int(request.POST.get("size"))
         result = cluster(dots_array, D, T, C)
-        context = {'result': result, 'flag': 1}
+        paras = {'D': D, 'T': T, 'C': C}
+        context = {'result': result, 'flag': 1, 'paras': paras}
 
     return render(request, 'view_clusters.html', context)
